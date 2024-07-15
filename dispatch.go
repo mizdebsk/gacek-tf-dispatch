@@ -178,6 +178,9 @@ func write_dispatch_info(job string, tf_id string) {
 
 func dispatch_job(job string) {
 	log.Printf("Attempting to dispatch job %s\n", job)
+	// Ensure dispatch info is writeable before submitting TF request
+	// In case write failure occurs, we want to fail early to avoid submitting TF request is submitted
+	write_dispatch_info(job, "XXX")
 	subject := get_subject(job)
 	artifacts := get_artifacts(job)
 	tf_req := prepare_tf_request(subject, artifacts)
