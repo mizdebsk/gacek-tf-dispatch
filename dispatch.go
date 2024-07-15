@@ -10,9 +10,9 @@ import (
 	"os"
 )
 
-var api_key_path = "/home/kojan/tf/api-key"
+var api_key_path = os.Getenv("TF_API_KEY_PATH")
 var api_key string
-var gacek_home = "/mnt/nfs/gacek"
+var gacek_home = os.Getenv("GACEK_HOME")
 var jobs_dir = gacek_home + "/jobs"
 var queues_dir = gacek_home + "/queues"
 
